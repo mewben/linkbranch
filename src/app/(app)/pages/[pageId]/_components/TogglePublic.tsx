@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { updatePageAction } from "@/lib/actions/pages";
 import { Page } from "@/lib/db/schema/pages";
+import { absoluteUrl } from "@/lib/utils";
 import Link from "next/link";
 import { toast } from "sonner";
 
@@ -20,7 +21,8 @@ export default function TogglePublic({
   isSubscribed: boolean;
   page: Page;
 }) {
-  const pageLink = "http://localhost:3000/share/" + page.slug;
+  const pageLink = absoluteUrl("/" + page.slug);
+
   return (
     <div className="relative">
       {isSubscribed ? null : (
